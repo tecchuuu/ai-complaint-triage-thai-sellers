@@ -2,7 +2,7 @@
 
 A Streamlit web app that automatically analyzes Thai product reviews for online sellers using sentiment analysis and AI-powered insights.
 
-Built as a CS462 Artificial Intelligence course project.
+Built as a CS460 Artificial Intelligence course project.
 
 ---
 

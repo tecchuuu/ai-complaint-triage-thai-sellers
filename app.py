@@ -237,6 +237,41 @@ if run:
                 </div>
                 """, unsafe_allow_html=True)
 
+                # ── DOWNLOAD REPORT ──
+                st.markdown('<div class="section-label" style="margin-top:1.8rem;">ดาวน์โหลดรายงาน</div>', unsafe_allow_html=True)
+
+                timestamp = pd.Timestamp.now().strftime("%Y%m%d_%H%M")
+
+                report_text = f"""TriageAI — รายงานวิเคราะห์รีวิวสินค้า
+สร้างเมื่อ: {pd.Timestamp.now().strftime("%d/%m/%Y %H:%M")}
+{'='*50}
+
+📊 สรุปภาพรวม
+คะแนนเฉลี่ย: {score} / 5
+รีวิวทั้งหมด: {total} รายการ
+✅ เชิงบวก: {int(pos)} ({round(pos/total*100)}%)
+💬 กลางๆ:   {int(neu)} ({round(neu/total*100)}%)
+⚠️ เชิงลบ:  {int(neg)} ({round(neg/total*100)}%)
+
+{'='*50}
+⚠️ ประเด็นเชิงลบที่พบบ่อย
+{'='*50}
+{themes if neg_comments else "ไม่มีรีวิวเชิงลบ"}
+
+{'='*50}
+✨ บทสรุปและคำแนะนำจาก AI
+{'='*50}
+{conclusion}
+"""
+
+                st.download_button(
+                    label="⬇️ ดาวน์โหลดรายงาน (.txt)",
+                    data=report_text.encode("utf-8-sig"),
+                    file_name=f"triage_report_{timestamp}.txt",
+                    mime="text/plain",
+                    use_container_width=True,
+                )
+
         except Exception as e:
             st.markdown(f"""
             <div class="result-card negative">
