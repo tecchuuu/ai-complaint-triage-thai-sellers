@@ -1,0 +1,295 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* ── Root palette ── */
+:root {
+    --bg:        #0d0f14;
+    --surface:   #13161e;
+    --surface2:  #1b1f2b;
+    --border:    #252936;
+    --accent:    #e8c547;
+    --accent2:   #f0a500;
+    --red:       #ff5c5c;
+    --green:     #4ecb8d;
+    --blue:      #5b9cf6;
+    --muted:     #6b7280;
+    --text:      #e8eaf0;
+    --text-dim:  #9ca3af;
+    --radius:    14px;
+    --shadow:    0 8px 32px rgba(0,0,0,.45);
+}
+
+/* ── Base ── */
+html, body, [data-testid="stAppViewContainer"] {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: 'Sarabun', sans-serif !important;
+}
+[data-testid="stHeader"]        { display: none !important; }
+[data-testid="stDecoration"]    { display: none !important; }
+[data-testid="stToolbar"]       { display: none !important; }
+section[data-testid="stMain"] > div { padding-top: 2rem !important; }
+
+/* ── Hero banner ── */
+.hero {
+    background: linear-gradient(135deg, #1a1d28 0%, #0d0f14 60%, #1a1408 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.8rem 2.4rem 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(232,197,71,.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(91,156,246,.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-tag {
+    display: inline-block;
+    background: rgba(232,197,71,.15);
+    border: 1px solid rgba(232,197,71,.35);
+    color: var(--accent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .3rem .8rem;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+}
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0 0 .6rem;
+}
+.hero-title span { color: var(--accent); }
+.hero-sub {
+    color: var(--text-dim);
+    font-size: .95rem;
+    line-height: 1.6;
+    max-width: 480px;
+}
+.hero-badges {
+    display: flex;
+    gap: .6rem;
+    margin-top: 1.4rem;
+    flex-wrap: wrap;
+}
+.badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: .3rem .9rem;
+    font-size: .75rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+/* ── Section label ── */
+.section-label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .9rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ── Example chips ── */
+.chip-row {
+    display: flex;
+    gap: .55rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+}
+
+/* Override Streamlit button for chips */
+div[data-testid="stHorizontalBlock"] button[kind="secondary"],
+div[data-testid="column"] button {
+    background: var(--surface2) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-dim) !important;
+    border-radius: 99px !important;
+    font-family: 'Sarabun', sans-serif !important;
+    font-size: .82rem !important;
+    padding: .35rem .9rem !important;
+    transition: all .2s ease !important;
+    white-space: nowrap !important;
+}
+div[data-testid="column"] button:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    background: rgba(232,197,71,.08) !important;
+}
+
+/* ── Text input ── */
+div[data-testid="stTextInput"] label {
+    color: var(--text-dim) !important;
+    font-size: .85rem !important;
+    font-family: 'Sarabun', sans-serif !important;
+}
+div[data-testid="stTextInput"] input {
+    background: var(--surface2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    color: var(--text) !important;
+    font-family: 'Sarabun', sans-serif !important;
+    font-size: 1rem !important;
+    padding: .75rem 1rem !important;
+    transition: border-color .2s !important;
+}
+div[data-testid="stTextInput"] input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(232,197,71,.12) !important;
+}
+
+/* ── Primary button ── */
+button[kind="primary"] {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+    border: none !important;
+    border-radius: var(--radius) !important;
+    color: #0d0f14 !important;
+    font-family: 'Sarabun', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    padding: .65rem 2rem !important;
+    transition: transform .15s, box-shadow .15s !important;
+    letter-spacing: .02em !important;
+}
+button[kind="primary"]:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(232,197,71,.35) !important;
+}
+
+/* ── Result cards ── */
+.result-card {
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-top: 1.4rem;
+    border: 1px solid;
+    animation: fadeUp .4s ease;
+}
+.result-card.negative {
+    background: rgba(255,92,92,.07);
+    border-color: rgba(255,92,92,.3);
+}
+.result-card.positive {
+    background: rgba(78,203,141,.07);
+    border-color: rgba(78,203,141,.3);
+}
+.result-card.neutral {
+    background: rgba(91,156,246,.07);
+    border-color: rgba(91,156,246,.3);
+}
+.result-icon { font-size: 1.8rem; margin-bottom: .5rem; }
+.result-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: .3rem;
+}
+.result-card.negative .result-title { color: var(--red); }
+.result-card.positive .result-title { color: var(--green); }
+.result-card.neutral  .result-title { color: var(--blue); }
+.result-body {
+    color: var(--text-dim);
+    font-size: .92rem;
+    line-height: 1.65;
+}
+
+/* ── AI response box ── */
+.ai-response {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+    position: relative;
+}
+.ai-label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .6rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+.ai-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+.ai-text {
+    color: var(--text);
+    font-size: .97rem;
+    line-height: 1.7;
+    font-family: 'Sarabun', sans-serif;
+}
+
+/* ── Divider ── */
+hr {
+    border: none !important;
+    border-top: 1px solid var(--border) !important;
+    margin: 1.8rem 0 !important;
+}
+
+/* ── Spinner ── */
+[data-testid="stSpinner"] { color: var(--accent) !important; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: .3; }
+}
+
+/* ── Warning/info override ── */
+[data-testid="stAlert"] {
+    background: var(--surface2) !important;
+    border-color: var(--border) !important;
+    color: var(--text-dim) !important;
+    border-radius: var(--radius) !important;
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: .75rem;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+}
